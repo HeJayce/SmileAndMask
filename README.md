@@ -26,7 +26,7 @@ pip install keras==2.0.8 -i  https://pypi.tuna.tsinghua.edu.cn/simple
 
 HOG描述器最重要的思想是：在一副图像中，局部目标的表象和形状能够被梯度或边缘的方向密度分布很好地描述。具体的实现方法是：首先将图像分成小的连通区域，我们把它叫细胞单元。然后采集细胞单元中各像素点的梯度的或边缘的方向直方图。最后把这些直方图组合起来就可以构成特征描述器。为了提高性能，我们还可以把这些局部直方图在图像的更大的范围内进行对比度归一化，所采用的方法是：先计算各直方图在这个区间中的密度，然后根据这个密度对区间中的各个细胞单元做归一化。通过这个归一化后，能对光照变化和阴影获得更好的效果。
 
-![image-20200707214109007](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707214109007.png)
+![Image](pic/image-20200707214109007.png)
 
 
 
@@ -43,13 +43,13 @@ HOG描述器最重要的思想是：在一副图像中，局部目标的表象�
 
 
 
-![image-20200707214507632](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707214507632.png)
+![Image](pic/image-20200707214507632.png)
 
 在上3个文件夹下分别创建smile 和 unsmile 文件夹
 
 2）将数据集的图片按照文件夹的名称分类，数量如下：
 
-![image-20200707214754845](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707214754845.png)
+![Image](pic/image-20200707214754845.png)
 
 3）依靠之前的猫狗数据集训练方法，构建卷积网络：
 
@@ -75,7 +75,7 @@ model.add(layers.Dense(1, activation='sigmoid'))
 model.summary()
 ```
 
-![image-20200707215101879](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707215101879.png)
+![Image](pic/image-20200707215101879.png)
 
 5）对图片进行归一化处理
 
@@ -113,7 +113,7 @@ test_generator = test_datagen.flow_from_directory(test_dir,
                                                    class_mode='binary'
 ```
 
-![image-20200707215252264](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707215252264.png)
+![Image](pic/image-20200707215252264.png)
 
 6)输出图像形状：
 
@@ -137,7 +137,7 @@ history = model.fit_generator(
       validation_steps=50)
 ```
 
-![image-20200707215453875](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707215453875.png)
+![Image](pic/image-20200707215453875.png)
 
 ```python
 model.save('genki4k/smile1.h5')
@@ -164,7 +164,7 @@ plt.legend()
 plt.show()
 ```
 
-![image-20200707215657595](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707215657595.png)
+![Image](pic/image-20200707215657595.png)
 
 ### 5.数据增强
 
@@ -196,7 +196,7 @@ for batch in datagen.flow(x, batch_size=1):
 plt.show()
 ```
 
-![image-20200707215850352](C:\Users\jayce\AppData\Roaming\Typora\typora-user-images\image-20200707215850352.png)
+![Image](pic/image-20200707215850352.png)
 
 继续构建卷积网络比进行归一化处理
 
